@@ -1,0 +1,4 @@
+node_modules/
+backend/smartfarm.db
+.env
+*.log

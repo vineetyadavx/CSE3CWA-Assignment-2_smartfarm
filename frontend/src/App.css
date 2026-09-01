@@ -1,0 +1,361 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #121212;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #e8e8e8;
+}
+
+/* ---------- Summary bar ---------- */
+
+.summary-bar {
+  border-bottom: 1px solid #333;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.summary-bar h1 {
+  margin: 0 0 12px;
+  font-size: 1.8em;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  font-size: 0.95em;
+  color: #bbb;
+}
+
+.summary-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.summary-actions button {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #2a2a2a;
+  color: #eee;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.15s;
+}
+
+.summary-actions button:hover:not(:disabled) {
+  background: #383838;
+}
+
+.summary-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Status colors */
+.status-Normal { color: #6fbf6f; }
+.status-Watch { color: #e0c030; }
+.status-Critical { color: #e05a5a; }
+.status-No-Crops { color: #999; }
+.status-Sensor-Feed-Unavailable { color: #e0904a; }
+
+/* ---------- Banners ---------- */
+
+.error-banner {
+  background: #3a1f1f;
+  border: 1px solid #8a3a3a;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-top: 12px;
+  color: #f0b0b0;
+}
+
+.error-banner button {
+  margin-top: 8px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #a55;
+  background: #4a2525;
+  color: #fff;
+  cursor: pointer;
+}
+
+.success-banner {
+  background: #1f3a24;
+  border: 1px solid #3a8a4a;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  color: #b0f0c0;
+}
+
+/* ---------- Crop grid & cards ---------- */
+
+.crop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.crop-card {
+  border: 1px solid #333;
+  border-left-width: 5px;
+  border-radius: 8px;
+  padding: 16px;
+  background: #1a1a1a;
+}
+
+.crop-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.15em;
+}
+
+.reading-time {
+  color: #999;
+  font-size: 0.85em;
+  margin: 4px 0;
+}
+
+.condition-line {
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.alerts-line {
+  color: #e0c030;
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.action-line {
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.card-settings {
+  font-size: 0.82em;
+  color: #999;
+  margin-top: 10px;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 8px;
+}
+
+.card-settings p {
+  margin: 3px 0;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.card-buttons button {
+  padding: 7px 12px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background: #2a2a2a;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+.card-buttons button:hover {
+  background: #383838;
+}
+
+/* Condition border colors */
+.condition-Dry { border-left-color: #e0904a; }
+.condition-Healthy { border-left-color: #6fbf6f; }
+.condition-Too-Wet { border-left-color: #5a9fe0; }
+.condition-Sensor-Problem { border-left-color: #e05a5a; }
+.condition-Invalid-Data { border-left-color: #b05ae0; }
+.condition-Sensor-Feed-Unavailable { border-left-color: #999; }
+
+/* ---------- Modals (Create/Edit/Confirm/History) ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.crop-form {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 26px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.crop-form h2 {
+  margin: 0 0 4px;
+  font-size: 1.2em;
+}
+
+.crop-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.88em;
+  color: #ccc;
+}
+
+.crop-form input,
+.crop-form select,
+.crop-form textarea {
+  padding: 8px;
+  background: #252525;
+  border: 1px solid #555;
+  color: #eee;
+  border-radius: 5px;
+  font-size: 0.95em;
+}
+
+.crop-form input:disabled {
+  color: #888;
+  background: #1e1e1e;
+}
+
+.crop-form textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.form-error {
+  color: #f08080;
+  font-size: 0.88em;
+  margin: 0;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.form-buttons button {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #2a2a2a;
+  color: #eee;
+  cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+  background: #2f5f3a;
+  border-color: #4a8a5a;
+}
+
+.form-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.confirm-dialog {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 24px;
+  width: 340px;
+}
+
+.confirm-dialog p {
+  margin: 0 0 6px;
+}
+
+/* ---------- Sensor history panel ---------- */
+
+.history-panel {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 22px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.history-header h2 {
+  margin: 0;
+  font-size: 1.15em;
+}
+
+.history-header button {
+  padding: 7px 14px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background: #2a2a2a;
+  color: #eee;
+  cursor: pointer;
+}
+
+.history-row {
+  border: 1px solid #2f2f2f;
+  border-left: 4px solid #444;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #202020;
+}
+
+.history-row p {
+  margin: 4px 0;
+}
+
+.latest-tag {
+  color: #6fbf6f;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.reading-notes {
+  color: #999;
+  font-size: 0.85em;
+}
+
+.history-row.condition-Dry { border-left-color: #e0904a; }
+.history-row.condition-Healthy { border-left-color: #6fbf6f; }
+.history-row.condition-Too-Wet { border-left-color: #5a9fe0; }
+.history-row.condition-Sensor-Problem { border-left-color: #e05a5a; }
+.history-row.condition-Invalid-Data { border-left-color: #b05ae0; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .crop-grid {
+    grid-template-columns: 1fr;
+  }
+  .crop-form,
+  .confirm-dialog,
+  .history-panel {
+    width: 100%;
+  }
+}
